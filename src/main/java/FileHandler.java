@@ -3,9 +3,10 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Locale;
 
 public class FileHandler {
-    private String path = Path.of("").toAbsolutePath().toString();
+    private final String path = Path.of("").toAbsolutePath().toString();
 
     public File[] showFiles() {
         File f = new File(path);
@@ -23,7 +24,7 @@ public class FileHandler {
     }
 
     public void createFile(String fileName) {
-        File file = new File(path, fileName);
+        File file = new File(path, fileName.toLowerCase(Locale.ROOT));
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -33,5 +34,20 @@ public class FileHandler {
         } catch (IOException e) {
             System.out.println("Something went wrong" + e.getMessage());
         }
+    }
+
+    public String deleteFile(String fileName) {
+        File files[] = showFiles();
+        try {
+            for (File file : files) {
+                if (file.getName().equals(fileName)) {
+                    file.delete();
+                    return "Removed.";
+                }
+            }
+        } catch (SecurityException e) {
+            System.out.println("Something went wrong " + e.getMessage());
+        }
+        return "File was not found";
     }
 }
