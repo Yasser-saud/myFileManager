@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Options {
 
-    public void Options() {
+    public void options() {
         FileHandler f = new FileHandler();
         String[] options = {"1- Search for a particular file", "2- create new file", "3- Delete a file", "4- Go back to home screen"};
         Scanner sc = new Scanner(System.in);

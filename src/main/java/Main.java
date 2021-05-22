@@ -1,6 +1,4 @@
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,20 +14,20 @@ public class Main {
     }
 
     public static void homeScreen() {
-        String[] options = {"\n1- List my current files in the current3 directory", "2- More options", "3- Exit"};
+        String[] options = {"\n1- List my current files in the current directory", "2- More options", "3- Exit"};
         for (String option : options) {
             System.out.println(option);
         }
 
         Scanner sc = new Scanner(System.in);
         FileHandler f = new FileHandler();
-        Options o = new Options();
-        File files[] = f.showFiles();
+        Options op = new Options();
 
         try {
             int input = sc.nextInt();
             switch (input) {
                 case 1: {
+                    File files[] = f.showFiles();
                     for (File file : files) {
                         System.out.println("\t" + file.getName());
                     }
@@ -37,7 +35,7 @@ public class Main {
                     break;
                 }
                 case 2: {
-                    o.Options();
+                    op.options();
                     homeScreen();
                     break;
                 }

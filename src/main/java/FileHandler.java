@@ -6,11 +6,13 @@ import java.nio.file.Path;
 import java.util.Locale;
 
 public class FileHandler {
+
     private final String path = Path.of("").toAbsolutePath().toString();
 
     public File[] showFiles() {
         File f = new File(path);
         File files[] = f.listFiles();
+        sort(files);
         return files;
     }
 
@@ -42,12 +44,30 @@ public class FileHandler {
             for (File file : files) {
                 if (file.getName().equals(fileName)) {
                     file.delete();
-                    return "Removed.";
+                    return "File have been removed";
                 }
             }
         } catch (SecurityException e) {
             System.out.println("Something went wrong " + e.getMessage());
         }
         return "File was not found";
+    }
+
+    private File[] sort(File[] files) {
+        // selection sort
+        for (int i = 0; i < files.length - 1; i++) {
+            int index = i;
+            for (int j = i + 1; j < files.length; j++) {
+                if (files[j].compareTo(files[index]) < 0) {
+                    index = j;
+                }
+            }
+            //swap
+            File temp = files[i];
+            files[i] = files[index];
+            files[index] = temp;
+        }
+
+        return files;
     }
 }
