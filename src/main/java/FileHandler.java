@@ -1,6 +1,4 @@
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Locale;
@@ -12,6 +10,8 @@ public class FileHandler {
     public File[] showFiles() {
         File f = new File(path);
         File files[] = f.listFiles();
+        // the above line by default sort the list in ascending order
+        // but i will explicitly sort it my self with the next line
         sort(files);
         return files;
     }
@@ -58,6 +58,7 @@ public class FileHandler {
         for (int i = 0; i < files.length - 1; i++) {
             int index = i;
             for (int j = i + 1; j < files.length; j++) {
+                // change < with > to sort descending instead of ascending
                 if (files[j].compareTo(files[index]) < 0) {
                     index = j;
                 }

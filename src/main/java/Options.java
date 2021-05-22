@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -36,7 +35,7 @@ public class Options {
                     break;
                 }
                 default: {
-                    System.out.println("unknown option");
+                    System.err.println("unknown option");
                 }
             }
         } catch (InputMismatchException e) {
