@@ -9,7 +9,7 @@ public class Main {
         System.out.println("\tWelcome to My File Manager");
         System.out.println("\t\tDeveloped by Yasser");
         System.out.println("◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽");
-        System.out.println("Please enter the number left of the corresponding option you want");
+        System.out.println("👉 Please enter the number left of the corresponding option you want");
         homeScreen();
     }
 
